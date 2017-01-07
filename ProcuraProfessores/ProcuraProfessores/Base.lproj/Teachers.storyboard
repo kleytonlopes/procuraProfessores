@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mRF-Sc-SNz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller Find Teachers-->
+        <scene sceneID="elv-70-XW6">
+            <objects>
+                <viewController id="mRF-Sc-SNz" customClass="ViewControllerFindTeachers" customModule="ProcuraProfessores" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uYY-as-3Ku"/>
+                        <viewControllerLayoutGuide type="bottom" id="7GY-ge-quA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E5C-10-gno">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="246" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VOz-VN-xJj">
+                                <rect key="frame" x="0.0" y="28" width="375" height="639"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="246" id="mbp-4o-haW" customClass="TableViewCellTeacher" customModule="ProcuraProfessores" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="246"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mbp-4o-haW" id="JKY-DR-hSq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="245.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohl-l4-O2a">
+                                                    <rect key="frame" x="32" y="8" width="135" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iK1-XS-8by">
+                                                    <rect key="frame" x="32" y="46" width="148" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaw-oF-rrn">
+                                                    <rect key="frame" x="25" y="75" width="70" height="64"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.81567529100000002" blue="0.1586507127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hFQ-Vc-UV7" customClass="FloatRatingView" customModule="FloatRatingView">
+                                                    <rect key="frame" x="8" y="171" width="137" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2D-4T-2Vr">
+                                                    <rect key="frame" x="190" y="177" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="floatRatingView" destination="hFQ-Vc-UV7" id="PgA-6S-Xd2"/>
+                                            <outlet property="imageViewPhoto" destination="eaw-oF-rrn" id="ugM-QK-P3m"/>
+                                            <outlet property="labelMateria" destination="iK1-XS-8by" id="vkV-zj-w2y"/>
+                                            <outlet property="labelName" destination="ohl-l4-O2a" id="67h-Uc-YEM"/>
+                                            <outlet property="labelNota" destination="Z2D-4T-2Vr" id="Pqx-Dv-sq5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7GY-ge-quA" firstAttribute="top" secondItem="VOz-VN-xJj" secondAttribute="bottom" id="843-t8-0ev"/>
+                            <constraint firstItem="VOz-VN-xJj" firstAttribute="leading" secondItem="E5C-10-gno" secondAttribute="leading" id="TG1-7X-Qbt"/>
+                            <constraint firstItem="VOz-VN-xJj" firstAttribute="top" secondItem="uYY-as-3Ku" secondAttribute="bottom" constant="8" id="eZG-Ab-3Wq"/>
+                            <constraint firstAttribute="trailing" secondItem="VOz-VN-xJj" secondAttribute="trailing" id="gi1-nX-TJL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableViewTeachers" destination="VOz-VN-xJj" id="bep-F3-DoI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hwQ-jb-XHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="StarEmpty" width="22" height="22"/>
+        <image name="StarFull" width="22" height="22"/>
+    </resources>
+</document>
