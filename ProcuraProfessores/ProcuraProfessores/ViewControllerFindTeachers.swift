@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
 
@@ -68,9 +69,19 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
     }
     
     func filterContentForSearchText(searchText: String) {
-        teacherApi.requestList(withFilters: ["prefix":searchText]) { (teachers, errors) in
+        teacherApi.requestList(withFilters: ["prefix":searchText]) { (teachers,pFobjects, errors) in
             self.teachers = teachers!
             self.tableViewTeachers.reloadData()
+            self.loadImages(with: pFobjects)
+        }
+    }
+    
+    func loadImages(with pFObjects: [PFObject]){
+        for index in 0...pFObjects.count {
+            teacherApi.requestImage(withPFObject: pFObjects[index], completionHandler: { (image, error) in
+                self.teachers[index].imagem = image
+                self.tableViewTeachers.reloadData()
+            })
         }
     }
 }

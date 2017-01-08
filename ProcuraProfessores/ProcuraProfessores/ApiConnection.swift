@@ -11,40 +11,31 @@ protocol ApiConnection {
     associatedtype EntityType
 }
 
-extension ApiConnection{
-    func requestList(withFilters filters: [String: Any], completionHandler: @escaping ([Teacher]?, Error?) -> Void) {
+extension ApiConnection where EntityType: ParseConversible {
+    
+    func requestImage(withPFObject pFObject: PFObject, completionHandler: @escaping (UIImage, Error?) -> Void){
+        let imageFromParse = pFObject["imagem"] as? PFFile
+        imageFromParse?.getDataInBackground(block: { (imagem, error) in
+            let image: UIImage! = UIImage(data: imagem!)!
+            completionHandler(image, error)
+        })
+    }
+    
+    func requestList(withFilters filters: [String: Any], completionHandler: @escaping ([EntityType]?,[PFObject], Error?) -> Void) {
         
-        var teachers = [Teacher]()
+        var entities = [EntityType]()
         let query = PFQuery(className:"Professores")
         if filters["prefix"] != nil {
-            query.whereKey("nome", hasPrefix: filters["prefix"] as! String?)
+            query.whereKey("nome", matchesRegex: "^\(filters["prefix"]!)", modifiers: "i")
         }
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
             if error == nil{
-                for object in objects!{
-                    let data = object
-                    let teacher = Teacher()
-                    teacher.name = data["nome"] as? String
-                    teacher.curriculo = data["curriculo"] as? String
-                    teacher.materia = data["materia"] as? String
-                    teacher.nota = data["nota"] as? Float
-                        
-                    let imageFromParse = data["imagem"] as? PFFile
-                        
-                    imageFromParse?.getDataInBackground(block: { (imagem, error) in
-                        let image: UIImage! = UIImage(data: imagem!)!
-                        teacher.imagem = image
-                        teachers.append(teacher)
-                            
-                        if teachers.count == objects?.count {
-                            completionHandler(teachers, nil)
-                        }
-                    })
-                        
-                        
-                    
+                for data in objects!{
+                    let entity = EntityType(with: data)
+                    entities.append(entity)
                 }
+                completionHandler(entities, objects! ,nil)
                 
             }else{
                 print("erro")

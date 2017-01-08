@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0600C7121E22B14100E45A99 /* ParseConversible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0600C7111E22B14100E45A99 /* ParseConversible.swift */; };
 		065115CF1E2199C6004E9ABA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065115CE1E2199C6004E9ABA /* AppDelegate.swift */; };
 		065115D41E2199C6004E9ABA /* Teachers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 065115D21E2199C6004E9ABA /* Teachers.storyboard */; };
 		065115D61E2199C6004E9ABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 065115D51E2199C6004E9ABA /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0600C7111E22B14100E45A99 /* ParseConversible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConversible.swift; sourceTree = "<group>"; };
 		065115CB1E2199C6004E9ABA /* ProcuraProfessores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProcuraProfessores.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065115CE1E2199C6004E9ABA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		065115D31E2199C6004E9ABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Teachers.storyboard; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				065116001E21A148004E9ABA /* Teacher.swift */,
+				0600C7111E22B14100E45A99 /* ParseConversible.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0600C7121E22B14100E45A99 /* ParseConversible.swift in Sources */,
 				065116051E21A172004E9ABA /* ApiConnection.swift in Sources */,
 				065116011E21A148004E9ABA /* Teacher.swift in Sources */,
 				065116061E21A172004E9ABA /* TeacherApi.swift in Sources */,
