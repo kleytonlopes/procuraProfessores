@@ -8,7 +8,7 @@
 import UIKit
 
 class Teacher{
-    var classID: Int!
+    var objectID: String!
     var name: String!
     var curriculo: String!
     var materia: String!
