@@ -17,10 +17,10 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.definesPresentationContext = true
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
         tableViewTeachers.tableHeaderView = searchController.searchBar
         
         searchController.searchBar.delegate = self
@@ -45,7 +45,15 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AlertUtil.presentOKAlert(withTitle: "Currículo", andMessage: self.teachers[indexPath.row].curriculo, originController: self)
+        
+        if searchController.searchBar.isFirstResponder {
+            AlertUtil.presentOKAlert(withTitle: "Currículo", andMessage: self.teachers[indexPath.row].curriculo, originController: self.searchController)
+        }
+        else{
+            AlertUtil.presentOKAlert(withTitle: "Currículo", andMessage: self.teachers[indexPath.row].curriculo, originController: self)
+        }
+        
+      
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
