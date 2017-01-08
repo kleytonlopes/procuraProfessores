@@ -18,6 +18,7 @@
 		065116051E21A172004E9ABA /* ApiConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065116031E21A172004E9ABA /* ApiConnection.swift */; };
 		065116061E21A172004E9ABA /* TeacherApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065116041E21A172004E9ABA /* TeacherApi.swift */; };
 		065116091E21A1B8004E9ABA /* TableViewCellTeacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065116081E21A1B8004E9ABA /* TableViewCellTeacher.swift */; };
+		0651160B1E21BF66004E9ABA /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651160A1E21BF66004E9ABA /* AlertUtil.swift */; };
 		09244849CEE02B890B4A4A25 /* Pods_ProcuraProfessoresTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C54B20C784B16E6B6CDE79 /* Pods_ProcuraProfessoresTests.framework */; };
 		864DD9E5335E8B4D54F9F734 /* Pods_ProcuraProfessores.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3314BF6F350BF91E735DF81E /* Pods_ProcuraProfessores.framework */; };
 		9497D2FAD68353518E98D1AC /* Pods_ProcuraProfessoresUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52ACF884DC19018307B4D726 /* Pods_ProcuraProfessoresUITests.framework */; };
@@ -58,6 +59,7 @@
 		065116031E21A172004E9ABA /* ApiConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConnection.swift; sourceTree = "<group>"; };
 		065116041E21A172004E9ABA /* TeacherApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherApi.swift; sourceTree = "<group>"; };
 		065116081E21A1B8004E9ABA /* TableViewCellTeacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellTeacher.swift; sourceTree = "<group>"; };
+		0651160A1E21BF66004E9ABA /* AlertUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
 		0D84F325F8BA4411FD16FE9A /* Pods-ProcuraProfessoresTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProcuraProfessoresTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProcuraProfessoresTests/Pods-ProcuraProfessoresTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3314BF6F350BF91E735DF81E /* Pods_ProcuraProfessores.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProcuraProfessores.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52ACF884DC19018307B4D726 /* Pods_ProcuraProfessoresUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProcuraProfessoresUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 				065115FF1E21A134004E9ABA /* Model */,
 				065115FE1E21A11E004E9ABA /* View Controllers */,
 				065115CE1E2199C6004E9ABA /* AppDelegate.swift */,
+				0651160A1E21BF66004E9ABA /* AlertUtil.swift */,
 				065115D21E2199C6004E9ABA /* Teachers.storyboard */,
 				065115D51E2199C6004E9ABA /* Assets.xcassets */,
 				065115D71E2199C6004E9ABA /* LaunchScreen.storyboard */,
@@ -496,6 +499,7 @@
 				065116051E21A172004E9ABA /* ApiConnection.swift in Sources */,
 				065116011E21A148004E9ABA /* Teacher.swift in Sources */,
 				065116061E21A172004E9ABA /* TeacherApi.swift in Sources */,
+				0651160B1E21BF66004E9ABA /* AlertUtil.swift in Sources */,
 				065115FD1E21A044004E9ABA /* ViewControllerFindTeachers.swift in Sources */,
 				065116091E21A1B8004E9ABA /* TableViewCellTeacher.swift in Sources */,
 				065115CF1E2199C6004E9ABA /* AppDelegate.swift in Sources */,

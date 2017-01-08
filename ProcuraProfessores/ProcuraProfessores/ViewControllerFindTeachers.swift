@@ -44,6 +44,10 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        AlertUtil.presentOKAlert(withTitle: "Currículo", andMessage: self.teachers[indexPath.row].curriculo, originController: self)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive && searchController.searchBar.text != "" {
             return teachers.count

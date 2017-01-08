@@ -136,7 +136,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="StarEmpty" width="22" height="22"/>
-        <image name="StarFull" width="22" height="22"/>
+        <image name="StarEmpty" width="96" height="96"/>
+        <image name="StarFull" width="96" height="96"/>
     </resources>
 </document>
