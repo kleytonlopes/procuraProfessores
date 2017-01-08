@@ -16,6 +16,13 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
     var teachers = [Teacher]()
     var teacherApi = TeacherAPI()
     
+    var currentViewController : UIViewController {
+        if searchController.searchBar.isFirstResponder {
+            return self.searchController
+        }
+        return self
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configSearchController()
@@ -49,11 +56,8 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var currentViewController: UIViewController = self
-        if searchController.searchBar.isFirstResponder {
-            currentViewController = self.searchController
-        }
-        AlertUtil.presentOKAlert(withTitle: "Currículo", andMessage: self.teachers[indexPath.row].curriculo, originController: currentViewController)
+        
+        AlertUtil.presentOKAlert(withTitle: "Currículo", andMessage: self.teachers[indexPath.row].curriculo, originController: self.currentViewController)
    
     }
     
@@ -69,18 +73,33 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
     }
     
     func filterContentForSearchText(searchText: String) {
-        teacherApi.requestList(withFilters: ["prefix":searchText]) { (teachers,pFobjects, errors) in
-            self.teachers = teachers!
-            self.tableViewTeachers.reloadData()
-            self.loadImages(with: pFobjects)
+        teacherApi.requestListOfObjects(withPrefix: searchText,key: TeacherAPI.apiKeys.nome,className: TeacherAPI.apiKeys.className) { (teachers,pFobjects, error) in
+            if(error == nil){
+                self.teachers = teachers!
+                self.tableViewTeachers.reloadData()
+                self.loadImages(with: pFobjects!)
+            }
+            else{
+                AlertUtil.presentOKAlert(withTitle: "Erro", andMessage:
+                    error!.localizedDescription, originController: self.currentViewController)
+            }
+            
         }
+  
     }
     
     func loadImages(with pFObjects: [PFObject]){
         for index in 0...pFObjects.count {
             teacherApi.requestImage(withPFObject: pFObjects[index], completionHandler: { (image, error) in
-                self.teachers[index].imagem = image
-                self.tableViewTeachers.reloadData()
+                if(error == nil){
+                    self.teachers[index].imagem = image
+                    self.tableViewTeachers.reloadData()
+                }
+                else{
+                    AlertUtil.presentOKAlert(withTitle: "Erro", andMessage:
+                        error!.localizedDescription, originController: self.currentViewController)
+                }
+               
             })
         }
     }

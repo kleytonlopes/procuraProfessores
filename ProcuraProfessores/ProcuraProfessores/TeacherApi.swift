@@ -11,6 +11,7 @@ import Foundation
 class TeacherAPI: ApiConnection {
     typealias EntityType = Teacher
     struct apiKeys {
+        static let className = "Professores"
         static let nome = "nome"
         static let curriculo = "curriculo"
         static let materia = "materia"

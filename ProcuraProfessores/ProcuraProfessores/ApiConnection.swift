@@ -13,23 +13,28 @@ protocol ApiConnection {
 
 extension ApiConnection where EntityType: ParseConversible {
     
-    func requestImage(withPFObject pFObject: PFObject, completionHandler: @escaping (UIImage, Error?) -> Void){
+    func requestImage(withPFObject pFObject: PFObject, completionHandler: @escaping (UIImage?, Error?) -> Void){
         let imageFromParse = pFObject["imagem"] as? PFFile
         imageFromParse?.getDataInBackground(block: { (imagem, error) in
-            let image: UIImage! = UIImage(data: imagem!)!
-            completionHandler(image, error)
+            if error == nil{
+                let image: UIImage! = UIImage(data: imagem!)!
+                completionHandler(image, error)
+            }
+            else{
+                completionHandler(nil, error)
+            }
+            
         })
     }
     
-    func requestList(withFilters filters: [String: Any], completionHandler: @escaping ([EntityType]?,[PFObject], Error?) -> Void) {
+    func requestListOfObjects(withPrefix prefix: String,key: String , className: String ,completionHandler: @escaping ([EntityType]?,[PFObject]?, Error?) -> Void) {
         
         var entities = [EntityType]()
-        let query = PFQuery(className:"Professores")
-        if filters["prefix"] != nil {
-            query.whereKey("nome", matchesRegex: "^\(filters["prefix"]!)", modifiers: "i")
-        }
+        let query = PFQuery(className:className)
+        query.whereKey(key, matchesRegex: "^\(prefix)", modifiers: "i")
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
+            
             if error == nil{
                 for data in objects!{
                     let entity = EntityType(with: data)
@@ -38,24 +43,8 @@ extension ApiConnection where EntityType: ParseConversible {
                 completionHandler(entities, objects! ,nil)
                 
             }else{
-                print("erro")
+                completionHandler(nil, nil ,error)
             }
         }
-
-
-//        let urlToRequest = baseURL.appending(endpoint, with: parameters)
-//        print(urlToRequest)
-//        Alamofire.request(urlToRequest).responseArray { (response: DataResponse<[EntityType]>) in
-//            switch response.result {
-//            case .failure(let error):
-//                completionHandler(nil, error)
-//            case .success(let value):
-//                completionHandler(value, nil)
-//            }
-//        }
-    }
-    
-    func requestObject(withParameters parameters: [String:Any], completionHandler: @escaping (EntityType?, Error?) -> Void) {
-        
     }
 }
