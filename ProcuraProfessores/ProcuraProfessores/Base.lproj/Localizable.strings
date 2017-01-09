@@ -7,6 +7,7 @@
 */
 
 "title_alert_error" = "Erro";
+"title_button_ok" = "OK";
 "title_alert_curriculo" = "Currículo";
 "message_no_results" = "Sem resultados";
 

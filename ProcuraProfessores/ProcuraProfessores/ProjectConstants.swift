@@ -13,6 +13,7 @@ enum Project {
         enum title: String {
             case curriculo = "title_alert_curriculo"
             case error = "title_alert_error"
+            case buttonOK = "title_button_ok"
         }
         // Messages
         enum message: String {
