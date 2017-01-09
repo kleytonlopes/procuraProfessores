@@ -12,8 +12,9 @@ import Parse
 class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
 
     @IBOutlet var tableViewTeachers: UITableView!
+    var noDataLabel: UILabel!
     let searchController = UISearchController(searchResultsController: nil)
-    var teachers = [Teacher]()
+    var teachers = [Teacher?]()
     var teacherApi = TeacherAPI()
     
     var currentViewController : UIViewController {
@@ -29,6 +30,15 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
         setDelegates()
         addNotificationsKeyboard()
         filterContentForSearchText(searchText: "")
+        initNoDataLabel()
+    }
+    
+    func initNoDataLabel(){
+        self.noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableViewTeachers.bounds.size.width, height: self.tableViewTeachers.bounds.size.height))
+        self.noDataLabel.text = "No Results"
+        self.noDataLabel.textAlignment = NSTextAlignment.center
+        self.tableViewTeachers.backgroundView = self.noDataLabel
+        self.noDataLabel.alpha = 0
     }
     
     func addNotificationsKeyboard(){
@@ -67,13 +77,15 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
 extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCellTeacher
+        weak var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCellTeacher
         let teacher: Teacher
-        teacher = teachers[indexPath.row]
+        teacher = teachers[indexPath.row]!
         cell?.labelName.text = teacher.name
         cell?.labelMateria.text = teacher.materia
         if(cell?.imageViewPhoto.image == nil){
             cell?.imageViewPhoto.image = teacher.imagem
+            cell?.imageViewPhoto.roundToCircle()
+           
         }
         cell?.imageViewPhoto.image = teacher.imagem
         cell?.labelNota.text = "\(teacher.nota!)"
@@ -83,14 +95,11 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        AlertUtil.presentOKAlert(withTitle: "Currículo", andMessage: self.teachers[indexPath.row].curriculo, originController: self.currentViewController)
+        AlertUtil.presentOKAlert(withTitle: "Currículo", andMessage: (self.teachers[indexPath.row]?.curriculo)!, originController: self.currentViewController)
    
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive && searchController.searchBar.text != "" {
-            return teachers.count
-        }
         return teachers.count
     }
     
@@ -102,6 +111,7 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
         teacherApi.requestListOfObjects(withPrefix: searchText,key: TeacherAPI.apiKeys.nome,className: TeacherAPI.apiKeys.className) { (teachers,pFobjects, error) in
             if(error == nil){
                 self.teachers = teachers!
+                self.hiddenNoDataLabel(arrayCount: self.teachers.count)
                 self.tableViewTeachers.reloadData()
                 self.loadImages(with: pFobjects!)
             }
@@ -109,23 +119,31 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
                 AlertUtil.presentOKAlert(withTitle: "Erro", andMessage:
                     error!.localizedDescription, originController: self.currentViewController)
             }
-            
         }
-  
+    }
+    
+    func hiddenNoDataLabel(arrayCount: Int){
+        if(arrayCount == 0){
+            self.noDataLabel.alpha = 1
+        }
+        else{
+            self.noDataLabel.alpha = 0
+        }
     }
     
     func loadImages(with pFObjects: [PFObject]){
-        for index in 0...pFObjects.count {
+        for index in 0...pFObjects.count - 1 {
             teacherApi.requestImage(withPFObject: pFObjects[index], completionHandler: { (image, error) in
                 if(error == nil){
-                    self.teachers[index].imagem = image
-                    self.tableViewTeachers.reloadData()
+                    self.teachers[index]?.imagem = image
+                    self.tableViewTeachers.beginUpdates()
+                    self.tableViewTeachers.reloadRows(at: [IndexPath(row: index, section: 0)], with: UITableViewRowAnimation.fade)
+                    self.tableViewTeachers.endUpdates()
                 }
                 else{
                     AlertUtil.presentOKAlert(withTitle: "Erro", andMessage:
                         error!.localizedDescription, originController: self.currentViewController)
                 }
-               
             })
         }
     }

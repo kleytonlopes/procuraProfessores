@@ -34,7 +34,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohl-l4-O2a">
-                                                    <rect key="frame" x="108" y="8" width="257" height="21"/>
+                                                    <rect key="frame" x="101" y="8" width="264" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="tiK-Nu-IXw"/>
                                                     </constraints>
@@ -43,7 +43,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iK1-XS-8by">
-                                                    <rect key="frame" x="108" y="31" width="249" height="21"/>
+                                                    <rect key="frame" x="101" y="31" width="256" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="YGH-16-xJt"/>
                                                     </constraints>
@@ -51,18 +51,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eaw-oF-rrn">
-                                                    <rect key="frame" x="8" y="10" width="92" height="81.5"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eaw-oF-rrn">
+                                                    <rect key="frame" x="8" y="10" width="85" height="81.5"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="92" id="STO-SF-PIn"/>
+                                                        <constraint firstAttribute="width" constant="85" id="STO-SF-PIn"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFQ-Vc-UV7" customClass="FloatRatingView" customModule="FloatRatingView">
-                                                    <rect key="frame" x="108" y="60" width="112" height="23.5"/>
+                                                    <rect key="frame" x="101" y="60" width="100" height="23.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="112" id="uSz-TQ-pgM"/>
+                                                        <constraint firstAttribute="width" constant="100" id="uSz-TQ-pgM"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
@@ -80,12 +80,12 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2D-4T-2Vr">
-                                                    <rect key="frame" x="240" y="60" width="72" height="27"/>
+                                                    <rect key="frame" x="221" y="60" width="50" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="RvP-eY-FWe"/>
-                                                        <constraint firstAttribute="width" constant="72" id="qZy-bY-XqM"/>
+                                                        <constraint firstAttribute="width" constant="50" id="qZy-bY-XqM"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

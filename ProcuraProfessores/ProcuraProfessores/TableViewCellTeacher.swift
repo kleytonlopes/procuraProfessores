@@ -10,15 +10,17 @@ import UIKit
 import FloatRatingView
 
 class TableViewCellTeacher: UITableViewCell {
-    @IBOutlet var labelName: UILabel!
-    @IBOutlet var labelMateria: UILabel!
-    @IBOutlet var imageViewPhoto: UIImageView!
-    @IBOutlet var labelNota: UILabel!
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var labelMateria: UILabel!
+    @IBOutlet weak var imageViewPhoto: UIImageView!
+    @IBOutlet weak var labelNota: UILabel!
 
     @IBOutlet var floatRatingView: FloatRatingView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.labelNota.layer.borderWidth = 1.5
+        self.labelNota.roundCorner(value: 6)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
