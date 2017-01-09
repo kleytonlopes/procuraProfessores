@@ -1,0 +1,18 @@
+PODS:
+  - Bolts/Tasks (1.8.4)
+  - FloatRatingView (2.0)
+  - Parse (1.14.2):
+    - Bolts/Tasks (~> 1.8)
+
+DEPENDENCIES:
+  - FloatRatingView (~> 2.0.0)
+  - Parse
+
+SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FloatRatingView: 857ab8f10040d06a42fc979f486c8f9fecd2f2e5
+  Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
+
+PODFILE CHECKSUM: b0755fbdd0f27b3a16b0bf7d059ada44f091e51a
+
+COCOAPODS: 1.1.1

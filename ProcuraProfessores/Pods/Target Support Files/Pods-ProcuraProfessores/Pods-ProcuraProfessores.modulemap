@@ -1,0 +1,6 @@
+framework module Pods_ProcuraProfessores {
+  umbrella header "Pods-ProcuraProfessores-umbrella.h"
+
+  export *
+  module * { export * }
+}
