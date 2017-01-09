@@ -127,6 +127,23 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		060A52681E23E725007563D5 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				065115D21E2199C6004E9ABA /* Teachers.storyboard */,
+				065115D71E2199C6004E9ABA /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		060A52691E23E893007563D5 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				065115CE1E2199C6004E9ABA /* AppDelegate.swift */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
 		065115C21E2199C5004E9ABA = {
 			isa = PBXGroup;
 			children = (
@@ -152,15 +169,14 @@
 		065115CD1E2199C6004E9ABA /* ProcuraProfessores */ = {
 			isa = PBXGroup;
 			children = (
+				060A52691E23E893007563D5 /* AppDelegate */,
+				060A52681E23E725007563D5 /* Storyboards */,
 				060A52601E23DA4B007563D5 /* Resources */,
 				060A525B1E23C6A3007563D5 /* Utils */,
 				065116071E21A1A3004E9ABA /* Custom Cells */,
 				065116021E21A164004E9ABA /* APIConnection */,
 				065115FF1E21A134004E9ABA /* Model */,
 				065115FE1E21A11E004E9ABA /* View Controllers */,
-				065115CE1E2199C6004E9ABA /* AppDelegate.swift */,
-				065115D21E2199C6004E9ABA /* Teachers.storyboard */,
-				065115D71E2199C6004E9ABA /* LaunchScreen.storyboard */,
 			);
 			path = ProcuraProfessores;
 			sourceTree = "<group>";
