@@ -14,3 +14,4 @@ A Aplicativo está utilizando Cocoapods, que está gerenciando dois frameworks:<
   -O sistema exibe um Alert com o currículo do Professor e o Botão OK.<br />
   
   
+  Autor: Kleyton da Costa Lopes 
