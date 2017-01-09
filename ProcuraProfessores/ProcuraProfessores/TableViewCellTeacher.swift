@@ -17,6 +17,19 @@ class TableViewCellTeacher: UITableViewCell {
 
     @IBOutlet var floatRatingView: FloatRatingView!
     
+    func populateFieldsWithTeacher(teacher: Teacher){
+        self.labelName.text = teacher.name
+        self.labelMateria.text = teacher.materia
+        if(self.imageViewPhoto.image == nil){
+            self.imageViewPhoto.image = teacher.imagem
+            self.imageViewPhoto.roundToCircle()
+            
+        }
+        self.imageViewPhoto.image = teacher.imagem
+        self.labelNota.text = "\(teacher.nota!)"
+        self.floatRatingView.rating = teacher.nota
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.labelNota.layer.borderWidth = 1.5

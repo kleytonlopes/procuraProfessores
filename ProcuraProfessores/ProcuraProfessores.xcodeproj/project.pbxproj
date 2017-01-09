@@ -668,6 +668,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C71B52D78082427E0B3CC91A /* Pods-ProcuraProfessores.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3GQGS66YGW;
 				INFOPLIST_FILE = ProcuraProfessores/Info.plist;
@@ -682,6 +683,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E43338DA2E4CF6F8F195E69D /* Pods-ProcuraProfessores.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3GQGS66YGW;
 				INFOPLIST_FILE = ProcuraProfessores/Info.plist;

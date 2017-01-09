@@ -78,25 +78,12 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         weak var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCellTeacher
-        let teacher: Teacher
-        teacher = teachers[indexPath.row]!
-        cell?.labelName.text = teacher.name
-        cell?.labelMateria.text = teacher.materia
-        if(cell?.imageViewPhoto.image == nil){
-            cell?.imageViewPhoto.image = teacher.imagem
-            cell?.imageViewPhoto.roundToCircle()
-           
-        }
-        cell?.imageViewPhoto.image = teacher.imagem
-        cell?.labelNota.text = "\(teacher.nota!)"
-        cell?.floatRatingView.rating = teacher.nota
+        cell?.populateFieldsWithTeacher(teacher: teachers[indexPath.row]!)
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         AlertUtil.presentOKAlert(withTitle: "Currículo", andMessage: (self.teachers[indexPath.row]?.curriculo)!, originController: self.currentViewController)
-   
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
