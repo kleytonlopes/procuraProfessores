@@ -10,13 +10,23 @@ import UIKit
 import FloatRatingView
 
 class TableViewCellTeacher: UITableViewCell {
+    
+    //MARK: Outlets
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelMateria: UILabel!
     @IBOutlet weak var imageViewPhoto: UIImageView!
     @IBOutlet weak var labelNota: UILabel!
-
     @IBOutlet var floatRatingView: FloatRatingView!
     
+    
+    //MARK: Views *** Load
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.labelNota.layer.borderWidth = 1.5
+        self.labelNota.roundCorner(value: 6)
+    }
+    
+    //MARK: Functions
     func populateFieldsWithTeacher(teacher: Teacher){
         self.labelName.text = teacher.name
         self.labelMateria.text = teacher.materia
@@ -30,14 +40,8 @@ class TableViewCellTeacher: UITableViewCell {
         self.floatRatingView.rating = teacher.nota
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.labelNota.layer.borderWidth = 1.5
-        self.labelNota.roundCorner(value: 6)
-    }
+  
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+
 
 }

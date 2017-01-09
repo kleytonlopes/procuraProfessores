@@ -16,6 +16,8 @@ class Teacher : ParseConversible {
     var imagem: UIImage?
     var nota: Float!
     
+    /** Inicializa o Teacher com o parâmetro PFObject
+     */
     convenience required init(with pFObject: PFObject) {
         self.init()
         self.name = pFObject[TeacherAPI.apiKeys.nome] as? String

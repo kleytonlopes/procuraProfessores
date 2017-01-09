@@ -10,11 +10,13 @@ import Parse
 protocol ApiConnection {
     associatedtype EntityType
 }
-
+private let keyImage = "image"
 extension ApiConnection where EntityType: ParseConversible {
     
+    /** Função para fazer o Download de uma imagem de um PFObject
+     */
     func requestImage(withPFObject pFObject: PFObject, completionHandler: @escaping (UIImage?, Error?) -> Void){
-        let imageFromParse = pFObject["imagem"] as? PFFile
+        let imageFromParse = pFObject[keyImage] as? PFFile
         imageFromParse?.getDataInBackground(block: { (imagem, error) in
             if error == nil{
                 let image: UIImage! = UIImage(data: imagem!)!
@@ -23,10 +25,11 @@ extension ApiConnection where EntityType: ParseConversible {
             else{
                 completionHandler(nil, error)
             }
-            
         })
     }
     
+    /** Função para fazer a requisição de uma lista de objetos que tem como prefixo uma palavra determinada.
+     */
     func requestListOfObjects(withPrefix prefix: String,key: String , className: String ,completionHandler: @escaping ([EntityType]?,[PFObject]?, Error?) -> Void) {
         
         var entities = [EntityType]()

@@ -122,7 +122,6 @@
 				065115DA1E2199C6004E9ABA /* Info.plist */,
 				065115D51E2199C6004E9ABA /* Assets.xcassets */,
 				060A52651E23DAB8007563D5 /* Localizable.strings */,
-				060A52661E23E2D1007563D5 /* ProjectConstants.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -142,6 +141,14 @@
 				065115CE1E2199C6004E9ABA /* AppDelegate.swift */,
 			);
 			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		060A526A1E23F596007563D5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				060A52661E23E2D1007563D5 /* ProjectConstants.swift */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 		065115C21E2199C5004E9ABA = {
@@ -169,6 +176,7 @@
 		065115CD1E2199C6004E9ABA /* ProcuraProfessores */ = {
 			isa = PBXGroup;
 			children = (
+				060A526A1E23F596007563D5 /* Constants */,
 				060A52691E23E893007563D5 /* AppDelegate */,
 				060A52681E23E725007563D5 /* Storyboards */,
 				060A52601E23DA4B007563D5 /* Resources */,

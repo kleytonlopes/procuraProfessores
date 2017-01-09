@@ -13,30 +13,34 @@ private let reuseIdentifier = "CellTeacher"
 
 class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
 
+    //MARK: Outlets
     @IBOutlet var tableViewTeachers: UITableView!
-    var noDataLabel: UILabel!
     let searchController = UISearchController(searchResultsController: nil)
+    var noDataLabel: UILabel!
+    
+    //MARK: Variables
     var teachers = [Teacher?]()
     var teacherApi = TeacherAPI()
-    
-    var currentViewController : UIViewController {
+    var currentContextViewController : UIViewController {
         if searchController.searchBar.isFirstResponder {
             return self.searchController
         }
         return self
     }
     
+    //MARK: Views *** Load
     override func viewDidLoad() {
         super.viewDidLoad()
         configSearchController()
         setDelegates()
-        addNotificationsKeyboard()
+        addKeyboardObservers()
         filterContentForSearchText(searchText: "")
         initNoDataLabel()
         
         
     }
     
+    //Init Label that show message of "No Results" in TableViewTeachers.
     func initNoDataLabel(){
         self.noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableViewTeachers.bounds.size.width, height: self.tableViewTeachers.bounds.size.height))
         self.noDataLabel.text = NSLocalizedString(Project.Localizable.message.noResults.rawValue, comment: "")
@@ -45,7 +49,27 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
         self.noDataLabel.alpha = 0
     }
     
-    func addNotificationsKeyboard(){
+    //MARK: Functions
+    
+    //Hidden Label with message of No Results
+    func hiddenNoDataLabel(arrayCount: Int){
+        if(arrayCount == 0){
+            self.noDataLabel.alpha = 1
+        }
+        else{
+            self.noDataLabel.alpha = 0
+        }
+    }
+    
+    //Delegates
+    func setDelegates(){
+        searchController.searchBar.delegate = self
+        tableViewTeachers.delegate = self
+        tableViewTeachers.dataSource = self
+    }
+    
+    //Keyboard
+    func addKeyboardObservers(){
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardWillShow(sender:)),
                                                name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -54,19 +78,7 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
                                                name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func setDelegates(){
-        searchController.searchBar.delegate = self
-        tableViewTeachers.delegate = self
-        tableViewTeachers.dataSource = self
-    }
-    
-    func configSearchController(){
-        self.definesPresentationContext = true
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        tableViewTeachers.tableHeaderView = searchController.searchBar
-    }
-    
+    //Adjusts the TableView's Size
     func keyboardWillShow(sender: NSNotification) {
         let info = sender.userInfo!
         let keyboardSize = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
@@ -77,8 +89,17 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
     func keyboardWillHide(sender: NSNotification) {
         tableViewTeachers.contentInset.bottom = 0
     }
-
+    
+    //Search Controller
+    func configSearchController(){
+        self.definesPresentationContext = true
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        tableViewTeachers.tableHeaderView = searchController.searchBar
+    }
 }
+
+//MARK: UITableViewDelegate and UITableViewDataSource
 extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -88,7 +109,7 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AlertUtil.presentOKAlert(withTitle: NSLocalizedString(Project.Localizable.title.curriculo.rawValue, comment: ""), andMessage: (self.teachers[indexPath.row]?.curriculo)!, originController: self.currentViewController)
+        AlertUtil.presentOKAlert(withTitle: NSLocalizedString(Project.Localizable.title.curriculo.rawValue, comment: ""), andMessage: (self.teachers[indexPath.row]?.curriculo)!, originController: self.currentContextViewController)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,6 +120,7 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
         return 1
     }
     
+    //Brings the results of the Parse according to the text entered in the search
     func filterContentForSearchText(searchText: String) {
         teacherApi.requestListOfObjects(withPrefix: searchText,key: TeacherAPI.apiKeys.nome,className: TeacherAPI.apiKeys.className) { (teachers,pFobjects, error) in
             if(error == nil){
@@ -109,20 +131,12 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
             }
             else{
                 AlertUtil.presentOKAlert(withTitle: NSLocalizedString(Project.Localizable.title.error.rawValue, comment: ""), andMessage:
-                    error!.localizedDescription, originController: self.currentViewController)
+                    error!.localizedDescription, originController: self.currentContextViewController)
             }
         }
     }
     
-    func hiddenNoDataLabel(arrayCount: Int){
-        if(arrayCount == 0){
-            self.noDataLabel.alpha = 1
-        }
-        else{
-            self.noDataLabel.alpha = 0
-        }
-    }
-    
+    //Load the image for each PFObject
     func loadImages(with pFObjects: [PFObject]){
         if !pFObjects.isEmpty {
             for index in 0...pFObjects.count - 1 {
@@ -135,13 +149,14 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
                     }
                     else{
                         AlertUtil.presentOKAlert(withTitle: NSLocalizedString(Project.Localizable.title.error.rawValue, comment: ""), andMessage:
-                            error!.localizedDescription, originController: self.currentViewController)
+                            error!.localizedDescription, originController: self.currentContextViewController)
                     }
                 })
             }
         }
     }
 }
+//MARK: UISearchResultsUpdating
 extension ViewControllerFindTeachers : UISearchResultsUpdating {
     public func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)

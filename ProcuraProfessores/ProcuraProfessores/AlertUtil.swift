@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 final class AlertUtil {
-    
+    //função que exibe um alerta com o botão OK
     static func presentOKAlert(withTitle title: String,andMessage message: String, originController: UIViewController) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

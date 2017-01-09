@@ -7,6 +7,8 @@
 //
 
 import Parse
+
+//Protocol that indicates that the object exists in Parse
 protocol ParseConversible {
     init(with pFObject: PFObject)
 }
