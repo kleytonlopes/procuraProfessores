@@ -27,7 +27,19 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
         super.viewDidLoad()
         configSearchController()
         setDelegates()
+        addNotificationsKeyboard()
+        filterContentForSearchText(searchText: "")
     }
+    
+    func addNotificationsKeyboard(){
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow(sender:)),
+                                               name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(sender:)),
+                                               name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
     func setDelegates(){
         searchController.searchBar.delegate = self
         tableViewTeachers.delegate = self
@@ -39,6 +51,17 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
         searchController.dimsBackgroundDuringPresentation = false
         tableViewTeachers.tableHeaderView = searchController.searchBar
     }
+    
+    func keyboardWillShow(sender: NSNotification) {
+        let info = sender.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        
+        tableViewTeachers.contentInset.bottom = keyboardSize
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        tableViewTeachers.contentInset.bottom = 0
+    }
 
 }
 extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSource {
@@ -49,6 +72,9 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
         teacher = teachers[indexPath.row]
         cell?.labelName.text = teacher.name
         cell?.labelMateria.text = teacher.materia
+        if(cell?.imageViewPhoto.image == nil){
+            cell?.imageViewPhoto.image = teacher.imagem
+        }
         cell?.imageViewPhoto.image = teacher.imagem
         cell?.labelNota.text = "\(teacher.nota!)"
         cell?.floatRatingView.rating = teacher.nota
