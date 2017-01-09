@@ -17,6 +17,7 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
     @IBOutlet var tableViewTeachers: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
     var noDataLabel: UILabel!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Variables
     var teachers = [Teacher?]()
@@ -36,8 +37,7 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
         addKeyboardObservers()
         filterContentForSearchText(searchText: "")
         initNoDataLabel()
-        
-        
+        self.activityIndicator.hidesWhenStopped = true
     }
     
     //Init Label that show message of "No Results" in TableViewTeachers.
@@ -122,10 +122,12 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
     
     //Brings the results of the Parse according to the text entered in the search
     func filterContentForSearchText(searchText: String) {
+        activityIndicator.startAnimating()
         teacherApi.requestListOfObjects(withPrefix: searchText,key: TeacherAPI.apiKeys.nome,className: TeacherAPI.apiKeys.className) { (teachers,pFobjects, error) in
             if(error == nil){
                 self.teachers = teachers!
                 self.hiddenNoDataLabel(arrayCount: self.teachers.count)
+                self.activityIndicator.stopAnimating()
                 self.tableViewTeachers.reloadData()
                 self.loadImages(with: pFobjects!)
             }
