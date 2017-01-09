@@ -10,7 +10,7 @@ import Parse
 protocol ApiConnection {
     associatedtype EntityType
 }
-private let keyImage = "image"
+private let keyImage = "imagem"
 extension ApiConnection where EntityType: ParseConversible {
     
     /** Função para fazer o Download de uma imagem de um PFObject
