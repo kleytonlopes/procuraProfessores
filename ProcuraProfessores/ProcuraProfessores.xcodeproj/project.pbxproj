@@ -139,7 +139,7 @@
 			children = (
 				060A525B1E23C6A3007563D5 /* Utils */,
 				065116071E21A1A3004E9ABA /* Custom Cells */,
-				065116021E21A164004E9ABA /* Connection */,
+				065116021E21A164004E9ABA /* APIConnection */,
 				065115FF1E21A134004E9ABA /* Model */,
 				065115FE1E21A11E004E9ABA /* View Controllers */,
 				065115CE1E2199C6004E9ABA /* AppDelegate.swift */,
@@ -186,13 +186,13 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		065116021E21A164004E9ABA /* Connection */ = {
+		065116021E21A164004E9ABA /* APIConnection */ = {
 			isa = PBXGroup;
 			children = (
 				065116031E21A172004E9ABA /* ApiConnection.swift */,
 				065116041E21A172004E9ABA /* TeacherApi.swift */,
 			);
-			name = Connection;
+			name = APIConnection;
 			sourceTree = "<group>";
 		};
 		065116071E21A1A3004E9ABA /* Custom Cells */ = {

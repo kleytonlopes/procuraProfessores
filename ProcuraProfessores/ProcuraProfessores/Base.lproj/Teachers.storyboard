@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="639"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="102" id="mbp-4o-haW" customClass="TableViewCellTeacher" customModule="ProcuraProfessores" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellTeacher" rowHeight="102" id="mbp-4o-haW" customClass="TableViewCellTeacher" customModule="ProcuraProfessores" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mbp-4o-haW" id="JKY-DR-hSq">

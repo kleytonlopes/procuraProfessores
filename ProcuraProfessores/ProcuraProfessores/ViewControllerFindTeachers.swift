@@ -9,6 +9,8 @@
 import UIKit
 import Parse
 
+private let reuseIdentifier = "CellTeacher"
+
 class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
 
     @IBOutlet var tableViewTeachers: UITableView!
@@ -77,7 +79,7 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
 extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        weak var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCellTeacher
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? TableViewCellTeacher
         cell?.populateFieldsWithTeacher(teacher: teachers[indexPath.row]!)
         return cell!
     }
