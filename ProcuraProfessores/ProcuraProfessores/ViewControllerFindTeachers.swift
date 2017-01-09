@@ -132,19 +132,21 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
     }
     
     func loadImages(with pFObjects: [PFObject]){
-        for index in 0...pFObjects.count - 1 {
-            teacherApi.requestImage(withPFObject: pFObjects[index], completionHandler: { (image, error) in
-                if(error == nil){
-                    self.teachers[index]?.imagem = image
-                    self.tableViewTeachers.beginUpdates()
-                    self.tableViewTeachers.reloadRows(at: [IndexPath(row: index, section: 0)], with: UITableViewRowAnimation.fade)
-                    self.tableViewTeachers.endUpdates()
-                }
-                else{
-                    AlertUtil.presentOKAlert(withTitle: "Erro", andMessage:
-                        error!.localizedDescription, originController: self.currentViewController)
-                }
-            })
+        if !pFObjects.isEmpty {
+            for index in 0...pFObjects.count - 1 {
+                teacherApi.requestImage(withPFObject: pFObjects[index], completionHandler: { (image, error) in
+                    if(error == nil){
+                        self.teachers[index]?.imagem = image
+                        self.tableViewTeachers.beginUpdates()
+                        self.tableViewTeachers.reloadRows(at: [IndexPath(row: index, section: 0)], with: UITableViewRowAnimation.fade)
+                        self.tableViewTeachers.endUpdates()
+                    }
+                    else{
+                        AlertUtil.presentOKAlert(withTitle: "Erro", andMessage:
+                            error!.localizedDescription, originController: self.currentViewController)
+                    }
+                })
+            }
         }
     }
 }

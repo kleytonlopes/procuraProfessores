@@ -7,12 +7,12 @@
 //
 
 import UIKit
-
 extension UIView {
     //MARK: Arredondar bordas de uma view
     func roundCorner(value : CGFloat){
         self.layer.cornerRadius = value
         self.layer.masksToBounds = true
+        
     }
     //MARK: Arredondar bordas de uma view até virar circulo
     func roundToCircle(){
@@ -20,3 +20,4 @@ extension UIView {
         self.layer.masksToBounds = true
     }
 }
+
