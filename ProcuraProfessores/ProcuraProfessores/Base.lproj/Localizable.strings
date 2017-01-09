@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  ProcuraProfessores
+
+  Created by Kleyton Lopes on 09/01/17.
+  Copyright © 2017 br.com.desafioColmeia. All rights reserved.
+*/
+
+"title_alert_error" = "Erro";
+"title_alert_curriculo" = "Currículo";
+"message_no_results" = "Sem resultados";
+

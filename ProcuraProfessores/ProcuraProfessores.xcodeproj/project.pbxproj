@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0600C7121E22B14100E45A99 /* ParseConversible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0600C7111E22B14100E45A99 /* ParseConversible.swift */; };
 		060A525D1E23C6B6007563D5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A525C1E23C6B6007563D5 /* UIView+Extension.swift */; };
+		060A52631E23DAB8007563D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 060A52651E23DAB8007563D5 /* Localizable.strings */; };
+		060A52671E23E2D1007563D5 /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A52661E23E2D1007563D5 /* ProjectConstants.swift */; };
 		065115CF1E2199C6004E9ABA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065115CE1E2199C6004E9ABA /* AppDelegate.swift */; };
 		065115D41E2199C6004E9ABA /* Teachers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 065115D21E2199C6004E9ABA /* Teachers.storyboard */; };
 		065115D61E2199C6004E9ABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 065115D51E2199C6004E9ABA /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 /* Begin PBXFileReference section */
 		0600C7111E22B14100E45A99 /* ParseConversible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConversible.swift; sourceTree = "<group>"; };
 		060A525C1E23C6B6007563D5 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		060A52641E23DAB8007563D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		060A52661E23E2D1007563D5 /* ProjectConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectConstants.swift; sourceTree = "<group>"; };
 		065115CB1E2199C6004E9ABA /* ProcuraProfessores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProcuraProfessores.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065115CE1E2199C6004E9ABA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		065115D31E2199C6004E9ABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Teachers.storyboard; sourceTree = "<group>"; };
@@ -112,6 +116,17 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		060A52601E23DA4B007563D5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				065115DA1E2199C6004E9ABA /* Info.plist */,
+				065115D51E2199C6004E9ABA /* Assets.xcassets */,
+				060A52651E23DAB8007563D5 /* Localizable.strings */,
+				060A52661E23E2D1007563D5 /* ProjectConstants.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		065115C21E2199C5004E9ABA = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +152,7 @@
 		065115CD1E2199C6004E9ABA /* ProcuraProfessores */ = {
 			isa = PBXGroup;
 			children = (
+				060A52601E23DA4B007563D5 /* Resources */,
 				060A525B1E23C6A3007563D5 /* Utils */,
 				065116071E21A1A3004E9ABA /* Custom Cells */,
 				065116021E21A164004E9ABA /* APIConnection */,
@@ -144,9 +160,7 @@
 				065115FE1E21A11E004E9ABA /* View Controllers */,
 				065115CE1E2199C6004E9ABA /* AppDelegate.swift */,
 				065115D21E2199C6004E9ABA /* Teachers.storyboard */,
-				065115D51E2199C6004E9ABA /* Assets.xcassets */,
 				065115D71E2199C6004E9ABA /* LaunchScreen.storyboard */,
-				065115DA1E2199C6004E9ABA /* Info.plist */,
 			);
 			path = ProcuraProfessores;
 			sourceTree = "<group>";
@@ -346,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				065115D91E2199C6004E9ABA /* LaunchScreen.storyboard in Resources */,
+				060A52631E23DAB8007563D5 /* Localizable.strings in Resources */,
 				065115D61E2199C6004E9ABA /* Assets.xcassets in Resources */,
 				065115D41E2199C6004E9ABA /* Teachers.storyboard in Resources */,
 			);
@@ -513,6 +528,7 @@
 				0600C7121E22B14100E45A99 /* ParseConversible.swift in Sources */,
 				065116051E21A172004E9ABA /* ApiConnection.swift in Sources */,
 				065116011E21A148004E9ABA /* Teacher.swift in Sources */,
+				060A52671E23E2D1007563D5 /* ProjectConstants.swift in Sources */,
 				065116061E21A172004E9ABA /* TeacherApi.swift in Sources */,
 				0651160B1E21BF66004E9ABA /* AlertUtil.swift in Sources */,
 				065115FD1E21A044004E9ABA /* ViewControllerFindTeachers.swift in Sources */,
@@ -554,6 +570,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		060A52651E23DAB8007563D5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				060A52641E23DAB8007563D5 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		065115D21E2199C6004E9ABA /* Teachers.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

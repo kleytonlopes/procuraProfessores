@@ -33,11 +33,13 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
         addNotificationsKeyboard()
         filterContentForSearchText(searchText: "")
         initNoDataLabel()
+        
+        
     }
     
     func initNoDataLabel(){
         self.noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableViewTeachers.bounds.size.width, height: self.tableViewTeachers.bounds.size.height))
-        self.noDataLabel.text = "No Results"
+        self.noDataLabel.text = NSLocalizedString(Project.Localizable.message.noResults.rawValue, comment: "")
         self.noDataLabel.textAlignment = NSTextAlignment.center
         self.tableViewTeachers.backgroundView = self.noDataLabel
         self.noDataLabel.alpha = 0
@@ -57,6 +59,7 @@ class ViewControllerFindTeachers: UIViewController ,UISearchBarDelegate {
         tableViewTeachers.delegate = self
         tableViewTeachers.dataSource = self
     }
+    
     func configSearchController(){
         self.definesPresentationContext = true
         searchController.searchResultsUpdater = self
@@ -85,7 +88,7 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AlertUtil.presentOKAlert(withTitle: "Currículo", andMessage: (self.teachers[indexPath.row]?.curriculo)!, originController: self.currentViewController)
+        AlertUtil.presentOKAlert(withTitle: NSLocalizedString(Project.Localizable.title.curriculo.rawValue, comment: ""), andMessage: (self.teachers[indexPath.row]?.curriculo)!, originController: self.currentViewController)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,7 +108,7 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
                 self.loadImages(with: pFobjects!)
             }
             else{
-                AlertUtil.presentOKAlert(withTitle: "Erro", andMessage:
+                AlertUtil.presentOKAlert(withTitle: NSLocalizedString(Project.Localizable.title.error.rawValue, comment: ""), andMessage:
                     error!.localizedDescription, originController: self.currentViewController)
             }
         }
@@ -131,7 +134,7 @@ extension ViewControllerFindTeachers : UITableViewDelegate, UITableViewDataSourc
                         self.tableViewTeachers.endUpdates()
                     }
                     else{
-                        AlertUtil.presentOKAlert(withTitle: "Erro", andMessage:
+                        AlertUtil.presentOKAlert(withTitle: NSLocalizedString(Project.Localizable.title.error.rawValue, comment: ""), andMessage:
                             error!.localizedDescription, originController: self.currentViewController)
                     }
                 })
